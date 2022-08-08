@@ -1,0 +1,55 @@
+<section class="search-container">
+    <article class="flex-center">
+            <input type="text" #query />
+            <select #searchType class="me-3">
+                <option value="nothing"></option>
+                <option value="colelctions">collections</option>
+                <option value="companies">companies</option>
+                <option value="keywords">keywords</option>
+                <option value="movies">movies</option>
+                <option value="people">person</option>
+                <option value="tv">tv shows</option>
+            </select>
+            <button type="button" class="btn btn-primary flex-between-center" (click)="search(query.value, searchType.value)">
+                <mat-icon class="me-3">search</mat-icon>
+                SEARCH
+            </button>
+    </article>
+    <!--<app-moviecard *ngIf="searchResponse?.results?.length" [movies]="searchResponse!.results!"></app-moviecard>-->
+</section>
+
+<ng-container [ngSwitch]="searchType.value">
+
+    <ng-container *ngSwitchCase="'collections'">
+        <ng-container *ngTemplateOutlet="resultTemplate; context: {$implicit: searchResponse.results, key: 'original_name'}"></ng-container>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="'companies'">
+        <ng-container *ngTemplateOutlet="resultTemplate; context: {$implicit: searchResponse.results, key: 'name'}"></ng-container>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="'movies'">
+        <ng-container *ngTemplateOutlet="resultTemplate; context: {$implicit: searchResponse.results, key: 'original_title'}"></ng-container>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="'people'">
+        <ng-container *ngTemplateOutlet="resultTemplate; context: {$implicit: searchResponse.results, key: 'name'}"></ng-container>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="'tv'">
+        <ng-container *ngTemplateOutlet="resultTemplate; context: {$implicit: searchResponse.results, key: 'original_name'}"></ng-container>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="''keywords">
+        <ng-container *ngTemplateOutlet="resultTemplate; context: {$implicit: searchResponse.results, key: 'name'}"></ng-container>
+    </ng-container>
+
+</ng-container>
+
+<ng-template #resultTemplate let-results let-key="key">
+    <div class="flex-between-center w-100">
+        <div class="bg-primary text-white" *ngFor="let result of results">
+            {{result[key]}}
+        </div>
+    </div>
+</ng-template>

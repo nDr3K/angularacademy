@@ -1,0 +1,9 @@
+@use './assets/scss/utilities';
+
+.flex-center {
+    @include utilities.flex-center;
+}
+
+.flex-between-center {
+    @include utilities.flex-between-center;
+}

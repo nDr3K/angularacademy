@@ -1,0 +1,20 @@
+<section class="p-3">
+    <app-header></app-header>
+    <p class="w-100" [ngClass]="{ 'text-start': clicked, 'text-center': !clicked }"><strong>La mia prima applicazione Angular</strong></p>
+    <!-- <app-test-one [config]="config" (clicked)="handleClick()"></app-test-one>
+    <p *ngIf="clicked">Il bottone dentro test-one è stato cliccato</p>
+    <p *ngIf="!clicked">In attesa che il bottone venga cliccato</p>
+
+    <app-students #studentsVT [students]="students" *ngIf="!clicked">
+        <h3>List of Students</h3>
+    </app-students> -->
+    <app-search></app-search>
+    <app-footer></app-footer>
+</section>
+
+<!--
+    DIRETTIVE
+    ** COMPONENTI
+    ** STRUTTURALI => modificare il DOM, ovvero creano o distruggono parte della vista
+    ** ATTRIBUTO => estendere il comportamento del selettore su cui le si applica aggiungendo nuove funzionalità
+-->

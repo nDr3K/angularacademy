@@ -1,0 +1,9 @@
+<section class="w-100 p-2">
+    <ng-content></ng-content>
+    <article class="bg-dark text-white p-3 d-inline-block m-2 p-2" style="width: 25%;" *ngFor="let student of students; let index = index">
+        <p>Mat. Num. #{{index + 1}}</p>
+        <p>{{ student.name + " " + student.surname}}</p>
+        <p>{{ student.city + "(" + student.region + ")"}}</p>
+        <p>Age: {{ student.age }} yo</p>
+    </article>
+</section>
